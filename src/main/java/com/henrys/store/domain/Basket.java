@@ -1,5 +1,6 @@
 package com.henrys.store.domain;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -8,6 +9,7 @@ import java.util.stream.Collectors;
 public class Basket {
 
     private List<Item> items  = new ArrayList<>();
+    private BigDecimal totalPrice;
 
     public void addItems(List<String> itemNames) {
       List<Item> newItems = itemNames.stream().map(Item::getItemByName).collect(Collectors.toList());
