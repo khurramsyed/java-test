@@ -1,4 +1,4 @@
-package com.henrys.store.model;
+package com.henrys.store.domain;
 
 import java.math.BigDecimal;
 import java.util.Arrays;
@@ -24,6 +24,6 @@ public enum Item {
     }
 
     public static Item getItemByName(String name){
-        return Arrays.stream(Item.values()).filter(item -> item.name().equalsIgnoreCase(name)).findFirst().orElseThrow(()->new IllegalArgumentException("Item "+name+ "Not Found"));
+        return Arrays.stream(Item.values()).filter(item -> item.name().equalsIgnoreCase(name)).findFirst().orElseThrow(()->new IllegalArgumentException("Item "+name+ " Not Found"));
     }
 }

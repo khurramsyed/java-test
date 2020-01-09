@@ -1,4 +1,4 @@
-package com.henrys.store.model;
+package com.henrys.store.domain;
 
 import org.junit.Test;
 
