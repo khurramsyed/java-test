@@ -23,6 +23,14 @@ public class ItemTest {
         assertThat(Item.APPLE.price).isEqualTo(new BigDecimal("0.10"));
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void nonExistentItemShouldThrowAnError(){
+       Item.getItemByName("miilk");
+    }
 
+    @Test
+    public void validItemShouldNotThrowError(){
+        assertThat(Item.MILK).isEqualTo(Item.getItemByName("milk"));
 
+    }
 }
