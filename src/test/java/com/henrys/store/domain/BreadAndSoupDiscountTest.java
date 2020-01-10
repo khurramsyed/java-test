@@ -23,4 +23,27 @@ public class BreadAndSoupDiscountTest {
         assertThat(new BreadAndSoupDiscount().calculateDiscount(items,now().minusDays(2))).isEqualTo(new BigDecimal("0.00"));
     }
 
+    @Test
+    public void shouldHaveDiscountWhen_DiscountedItemsArePresent_And_DiscountStarted(){
+        List<Item> items = Arrays.asList(Item.getItemByName("soup"),Item.getItemByName("soup"), Item.getItemByName("bread"));
+        assertThat(new BreadAndSoupDiscount().calculateDiscount(items,now())).isEqualTo(new BigDecimal("0.40"));
+    }
+
+    @Test
+    public void shouldHaveNoDiscountWhen_DiscountedItemsArePresent_And_DiscountEndDateIsPassed(){
+        List<Item> items = Arrays.asList(Item.getItemByName("soup"),Item.getItemByName("soup"), Item.getItemByName("bread"));
+        assertThat(new BreadAndSoupDiscount().calculateDiscount(items,now().plusDays(7))).isEqualTo(new BigDecimal("0.00"));
+    }
+
+    @Test
+    public void shouldHaveNoDiscount_WhenThereIsNoBread(){
+        List<Item> items = Arrays.asList(Item.getItemByName("soup"),Item.getItemByName("soup"));
+        assertThat(new BreadAndSoupDiscount().calculateDiscount(items,now())).isEqualTo(new BigDecimal("0.00"));
+    }
+
+    @Test
+    public void shouldHaveNoDiscount_WhenThereIsNotEnoughSoups(){
+        List<Item> items = Arrays.asList(Item.getItemByName("soup"),Item.getItemByName("bread"));
+        assertThat(new BreadAndSoupDiscount().calculateDiscount(items,now())).isEqualTo(new BigDecimal("0.00"));
+    }
 }
