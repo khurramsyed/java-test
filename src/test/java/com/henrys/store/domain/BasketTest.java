@@ -35,4 +35,6 @@ public class BasketTest {
         assertThat(basket.getPriceBeforeDiscount()).isEqualTo(new BigDecimal("3.60"));
         assertThat(basket.getDiscountedPrice(LocalDate.now().plusDays(3))).isEqualTo(new BigDecimal("3.18"));
     }
+
+
 }

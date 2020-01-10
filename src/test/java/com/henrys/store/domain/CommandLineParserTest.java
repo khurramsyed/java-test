@@ -27,8 +27,8 @@ public class CommandLineParserTest {
     @Test
     public void noErrorMessageShouldBeDisplayedWhenCorrectParamtersPassed(){
         assertThat(commandLineParser.parse(new String[]{"1", "apple", "soup"}).isParsingValid()).isEqualTo(true);
-        assertThat(commandLineParser.getStockItems()).contains(Item.APPLE);
-        assertThat(commandLineParser.getStockItems()).contains(Item.SOUP);
+        assertThat(commandLineParser.getStockItems()).contains(Item.APPLE.name.toLowerCase());
+        assertThat(commandLineParser.getStockItems()).contains(Item.SOUP.name.toLowerCase());
     }
 
     @Test

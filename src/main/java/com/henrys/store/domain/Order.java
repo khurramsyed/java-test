@@ -11,5 +11,5 @@ import java.util.List;
 public class Order {
 
     private LocalDate orderDate;
-    private List<Item> items;
+    private List<String> items;
 }

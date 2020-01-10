@@ -33,4 +33,9 @@ public class Basket {
                         .reduce(BigDecimal.ZERO, BigDecimal::add);
         return getPriceBeforeDiscount().subtract(totalDiscount).setScale(2,RoundingMode.DOWN);
     }
+
+
+    public String printBasketDetails(LocalDate date){
+        return "Expected Total Cost ="+getDiscountedPrice(date);
+    }
 }

@@ -1,12 +1,25 @@
 package com.henrys.store.domain;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.stream.Collectors;
 
 public class HenryStoreApp {
 
-    public static void main(String args[]){
+    public static void main(String args[]) {
+
+
         CommandLineParser commandLineParser = new CommandLineParser();
-       // commandLineParser.parse
+        ArgumentParsingResult parsingResult = commandLineParser.parse(args);
+
+        if(parsingResult.isParsingValid()) {
+
+            Basket basket = new Basket();
+            basket.addItems(parsingResult.getOrder().getItems());
+            System.out.print(basket.printBasketDetails(parsingResult.getOrder().getOrderDate()));
+
+        }else{
+
+            System.out.print(commandLineParser.getErrorMessage());
+        }
+
     }
 }

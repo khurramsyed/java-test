@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 public class CommandLineParser {
 
     private LocalDate orderDay;
-    private List<Item> stockItems;
+    private List<String> stockItems;
     private String errorMessage;
 
     public static final String INVALID_USAGE = "Usage HenrysStoreApp <difference from current day>  <Item1> <Itme2> ....";
@@ -36,9 +36,9 @@ public class CommandLineParser {
     }
 
     private boolean parserOrderItems(String... args) {
-        List<String> inputItems = Arrays.asList(Arrays.copyOfRange(args, 1, args.length ));
+        stockItems = Arrays.asList(Arrays.copyOfRange(args, 1, args.length ));
         try {
-            stockItems = inputItems.stream().map(Item::getItemByName).collect(Collectors.toList());
+             stockItems.stream().map(Item::getItemByName).collect(Collectors.toList());
             return true;
         } catch (IllegalArgumentException ex) {
             errorMessage = ex.getMessage();
