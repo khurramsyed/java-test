@@ -5,5 +5,6 @@ import java.util.List;
 
 public interface Offer {
 
-    BigDecimal calculateDiscount(List<Item> items);
+    BigDecimal calculateDiscount(List<Item> items, int daysInFuture);
+    boolean isApplicable(int daysInFuture);
 }
