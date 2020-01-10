@@ -10,16 +10,30 @@ public class CommandLineParserTest {
 
     @Test
     public void errorMessageShouldBeDisplayedWhenNoParameterIsPassed(){
-        assertThat(commandLineParser.parse(new String[]{})).isEqualTo(false);
+        assertThat(commandLineParser.parse(new String[]{}).isParsingValid()).isEqualTo(false);
     }
 
     @Test
     public void errorMessageShouldBeDisplayedWhenDaysIsNotANumber(){
-        assertThat(commandLineParser.parse(new String[]{"X"})).isEqualTo(false);
+        assertThat(commandLineParser.parse(new String[]{"X", "apple"}).isParsingValid()).isEqualTo(false);
     }
 
     @Test
-    public void errorMessageShouldBeDisplayedWhenDaysIsANumber(){
-        assertThat(commandLineParser.parse(new String[]{"1"})).isEqualTo(true);
+    public void errorMessageShouldBeDisplayedWhenMissingParameter(){
+        assertThat(commandLineParser.parse(new String[]{"1"}).isParsingValid()).isEqualTo(false);
+        assertThat(commandLineParser.getErrorMessage()).isEqualTo(CommandLineParser.INVALID_USAGE);
+    }
+
+    @Test
+    public void noErrorMessageShouldBeDisplayedWhenCorrectParamtersPassed(){
+        assertThat(commandLineParser.parse(new String[]{"1", "apple", "soup"}).isParsingValid()).isEqualTo(true);
+        assertThat(commandLineParser.getStockItems()).contains(Item.APPLE);
+        assertThat(commandLineParser.getStockItems()).contains(Item.SOUP);
+    }
+
+    @Test
+    public void noErrorMessageShouldBeDisplayedWhenInvalidItemsIsPassed(){
+        assertThat(commandLineParser.parse(new String[]{"1", "apple", "invalid itme"}).isParsingValid()).isEqualTo(false);
+        assertThat(commandLineParser.getErrorMessage()).contains("Not Found");
     }
 }
