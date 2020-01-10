@@ -3,16 +3,22 @@
 This is a simple exercise to allow you to demostrate your software engineering skillset. It's completly up to you how long you give yourself, stop when you're happy with the quality of your work, but we don't expect it to take too long.
 
 ## Instructions
-  1. Please fork this repository and work on your fork.
-     _https://help.github.com/en/articles/fork-a-repo_
-  2. Commit changes frequently so that we can review your progression with you later.
-     _https://crealytics.com/blog/5-reasons-keeping-git-commits-small/_
-  3. You should use a recognised build tool, e.g. _gradle_, _maven_...
-  4. We are currently using [open JDK 8u181](https://cdn.azul.com/zulu/bin/zulu8.31.0.1-jdk8.0.181-win_x64.msi). But please use the JDK you think is most appropriate to demonstrate your skillset. 
-  5. We don't expect 100% code coverage, we expect well tested code.
-     _https://medium.com/@nicklee1/why-test-code-coverage-targets-are-a-bad-idea-1b9b8ef711ef_
-  6. Any other tools or libraries used must be freely available. Any third-party jars must be accessible via [maven central](https://mvnrepository.com/repos/central).
-  7. The specification is below.
+To run this application
+- Using IntelliJ Idea
+    You need to run HenrysStoreApp class with following arguments 
+           - number of days from now
+           - list of itmes separated by space 
+           for example 
+           
+~~~
+HenrysStoreApp 2 apple apple soup soup bread
+~~~
+- Using Command Line 
+    - build a jar using `mvn clean package`
+    - then issue following command for example 
+~~~
+java -jar target/grocery-store-1.0-SNAPSHOT.jar 1 apple apple apple
+~~~
   
 ## Specification
 
