@@ -14,8 +14,7 @@ public abstract class TimeBoundOffer implements Offer {
     }
 
     @Override
-    public boolean isApplicable(int daysInFuture) {
-        LocalDate purchaseDate = now().plusDays(daysInFuture);
+    public boolean isApplicable(LocalDate purchaseDate) {
         return (purchaseDate.isAfter(startDate) || purchaseDate.isEqual(startDate)) &&
                 (purchaseDate.isBefore(endDate) || purchaseDate.isEqual(endDate));
     }

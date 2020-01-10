@@ -9,8 +9,8 @@ import java.util.List;
 
 public class AppleDiscount extends TimeBoundOffer {
     @Override
-    public BigDecimal calculateDiscount(List<Item> items, int daysInFuture) {
-        if(isApplicable(daysInFuture)) {
+    public BigDecimal calculateDiscount(List<Item> items, LocalDate purchaseDate) {
+        if(isApplicable(purchaseDate)) {
             return items.stream().filter(Item.APPLE::equals)
                     .map(item -> item.price.multiply(new BigDecimal("0.1")))
                     .reduce(BigDecimal.ZERO, BigDecimal::add)
@@ -26,6 +26,6 @@ public class AppleDiscount extends TimeBoundOffer {
 
     @Override
     protected LocalDate setOfferEndDate() {
-        return now().plusMonths(1).withDayOfMonth(1);
+        return now().plusMonths(1).withDayOfMonth(1).minusDays(1);
     }
 }
